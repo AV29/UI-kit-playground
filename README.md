@@ -1,2 +1,1 @@
-# UI-kit-playground
-Prototypes for UI reusable controls
+### UI kit library playground
