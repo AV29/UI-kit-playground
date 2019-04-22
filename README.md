@@ -23,9 +23,17 @@ Bad parts
 
 *----------------------------------------------------------------------------------------------------------------------*
 
-### Dev Extreme ([see here](https://github.com/AV29/UI-kit-playground/blob/master/src/components/DevExtreme/DevExtreme.jsx))
+### React Toolbox ([see here](http://react-toolbox.io))
 
-#### These components seem to be the most suitable yet so far. 
+Good parts: 
+
+Bad parts
+1) Seem to be not compatible with less.
+2) Requires specific bundler configuration
+  
+*----------------------------------------------------------------------------------------------------------------------*
+
+### Dev Extreme ([see here](https://github.com/AV29/UI-kit-playground/blob/master/src/components/DevExtreme/DevExtreme.jsx))
 
 Good parts: 
 1) Much larger ecosystem of components.

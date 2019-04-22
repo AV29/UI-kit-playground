@@ -5,10 +5,8 @@ import Checkbox from './controls/Checkbox';
 import TextInput from './controls/TextInput';
 import TextArea from './controls/TextArea';
 import Switch from './controls/Switch';
-import { DemoControlsContainer, DemoThemeContainer } from '../demo/DemoWrappers'
-import useMaterialUIDemo from './useMaterialUIDemo';
-import './MaterialUI.less';
-
+import { DemoControlsContainer, DemoThemeContainer } from '../demo/DemoWrappers';
+import useControls from '../demo/useControls';
 
 const MaterialUI = () => {
   const {
@@ -16,7 +14,7 @@ const MaterialUI = () => {
     handleChangeRadio,
     handleChangeCheckBox,
     values: { radio, checkBox, textInput, textArea }
-  } = useMaterialUIDemo();
+  } = useControls();
 
   return (
     <DemoThemeContainer title="Material UI">

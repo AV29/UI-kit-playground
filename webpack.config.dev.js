@@ -34,7 +34,7 @@ export default {
     })
   ],
   resolve: {
-    extensions: ['.js', '.jsx', '.css', '.less']
+    extensions: ['.js', '.jsx', '.css', '.scss']
   },
   module: {
     rules: [
@@ -47,7 +47,7 @@ export default {
         }
       },
       {
-        test: /(\.css|\.less)$/,
+        test: /(\.css|\.scss)$/,
         use: [
           'style-loader',
           {
@@ -61,9 +61,10 @@ export default {
             }
           },
           {
-            loader: 'less-loader',
+            loader: 'sass-loader',
             options: {
-              sourceMap: true
+              sourceMap: true,
+              strictMath: true
             }
           }
         ]

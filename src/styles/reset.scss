@@ -6,10 +6,10 @@
   }
 
   body, html {
-    font-family: @default-font-family;
+    font-family: $default-font-family;
     font-size: 62.5%;
-    color: @application-font-color;
-    background-color: @default-background-color;
+    color: $application-font-color;
+    background-color: $default-background-color;
   }
 
   html, body, h1, h2, h3, p {
@@ -18,7 +18,7 @@
   }
 
   a, button, select, option, input, textarea {
-    font-family: @default-font-family;
+    font-family: $default-font-family;
   }
 
   input::-ms-clear {
