@@ -26,10 +26,14 @@ Bad parts
 ### React Toolbox ([see here](http://react-toolbox.io))
 
 Good parts: 
+1) meets our requirements for styles out of the box.
+2) css styles used to customize styling.
 
 Bad parts
 1) Seem to be not compatible with less.
 2) Requires specific bundler configuration
+3) Not very straightforward styling API (from the first sight)
+4) Last commits were made 6 months ago
   
 *----------------------------------------------------------------------------------------------------------------------*
 

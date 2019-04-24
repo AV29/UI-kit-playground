@@ -1,0 +1,41 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/variables';
+
+.on {
+  background-color: $primary-regular;
+
+  .thumb {
+    background-color: $primary-dark;
+  }
+}
+
+.off {
+  background-color: $grey-25;
+
+  .thumb {
+    background-color: $grey-0;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+
+  .on, .off {
+    background-color: $grey-10;
+    cursor: not-allowed;
+
+    .thumb {
+      background-color: $grey-10;
+    }
+  }
+
+  .text {
+    cursor: not-allowed;
+    color: $grey-10;
+  }
+
+}
+
+
+
+

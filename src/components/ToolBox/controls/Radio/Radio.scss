@@ -1,0 +1,31 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/variables';
+
+.radio {
+  border-color: $grey-60;
+}
+
+.radioChecked {
+  border-color: $primary-regular;
+
+  &::before {
+    background-color: $primary-regular;
+  }
+}
+
+.text {
+  color: $grey-60;
+  cursor: pointer;
+}
+
+.disabled {
+  cursor: not-allowed;
+
+  .radio, .text {
+    cursor: not-allowed;
+    border-color: $grey-20;
+    color: $grey-20;
+  }
+
+}
+

@@ -1,7 +1,6 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from 'react-toolbox/lib/switch';
+import theme from './Switch.scss';
 
 const styles = {
   switchBase: {
@@ -28,16 +27,11 @@ const styles = {
   disabled: {}
 };
 
-export default withStyles(styles)(({ classes, label, ...props }) => {
+export default (({ ...props }) => {
   return (
-    <FormControlLabel
-      label={label}
-      control={
-        <Switch
-          classes={{ ...classes }}
-          {...props}
-        />
-      }
+    <Switch
+      theme={theme}
+      {...props}
     />
   )
 });
