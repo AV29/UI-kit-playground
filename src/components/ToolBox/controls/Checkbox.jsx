@@ -1,33 +1,13 @@
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from 'react-toolbox/lib/checkbox';
+import theme from './Checkbox.scss';
 
-const styles = {
-  colorPrimary: {
-    color: '#666666',
-    '&$checked': {
-      color: '#009639'
-    },
-    '&$disabled': {
-      color: '#cccccc'
-    }
-  },
-  checked: {},
-  disabled: {}
-};
-
-export default withStyles(styles)(({ classes, color = 'primary', label, ...props }) => {
+export default (({ classes, label, ...props }) => {
   return (
-    <FormControlLabel
+    <Checkbox
       label={label}
-      control={
-        <Checkbox
-          color={color}
-          classes={{...classes}}
-          {...props}
-        />
-      }
+      theme={theme}
+      {...props}
     />
   )
 });

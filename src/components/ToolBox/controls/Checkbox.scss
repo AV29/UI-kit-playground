@@ -1,0 +1,27 @@
+@import '../../../styles/colors';
+@import '../../../styles/variables';
+
+.check {
+  color: $grey-60;
+
+  &.checked {
+    background-color: $primary-regular;
+    border-color: $primary-regular;
+  }
+}
+
+.disabled {
+  cursor: not-allowed;
+
+  .check {
+    &.checked {
+      cursor: not-allowed;
+      background-color: $grey-20;
+      border-color: $grey-20;
+    }
+  }
+}
+
+
+
+
