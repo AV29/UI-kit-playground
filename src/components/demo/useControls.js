@@ -20,6 +20,15 @@ function reducer(state, { type, payload }) {
       };
     }
 
+    case 'CHANGE_SELECT_VALUE': {
+      const { value } = payload;
+
+      return {
+        ...state,
+        select: value
+      };
+    }
+
     case 'CHANGE_CHECKBOX_VALUE': {
       const { value } = payload;
 
@@ -37,19 +46,20 @@ function reducer(state, { type, payload }) {
   }
 }
 
-const initialState = {
+const baseInitialState = {
   checkBox: {
     a: true,
     b: false,
     c: true
   },
+  select: '',
   radio: 'c',
   textInput: 'Llamasoft UI Kit',
   textArea: 'This is a very long description This is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long description This is a very long description This is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is '
 };
 
-function useMaterialUIDemo() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+export default function(initialState) {
+  const [state, dispatch] = useReducer(reducer, initialState || baseInitialState);
 
   return {
     handleChange: ({ target: { value, name } }) => {
@@ -61,8 +71,9 @@ function useMaterialUIDemo() {
     handleChangeCheckBox: ({ target: { value } }) => {
       dispatch({ type: 'CHANGE_CHECKBOX_VALUE', payload: { value } })
     },
+    handleSelectChange: ({ target: { value } }) => {
+      dispatch({ type: 'CHANGE_SELECT_VALUE', payload: { value } })
+    },
     values: state
   };
 }
-
-export default useMaterialUIDemo;

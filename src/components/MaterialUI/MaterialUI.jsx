@@ -5,15 +5,19 @@ import Checkbox from './controls/Checkbox';
 import TextInput from './controls/TextInput';
 import TextArea from './controls/TextArea';
 import Switch from './controls/Switch';
+import Select from './controls/Select';
 import { DemoControlsContainer, DemoThemeContainer } from '../demo/DemoWrappers';
 import useControls from '../demo/useControls';
+
+const options = [{ label: 'Anton', value: 1 }, { label: 'Hamed', value: 2 }];
 
 const MaterialUI = () => {
   const {
     handleChange,
     handleChangeRadio,
     handleChangeCheckBox,
-    values: { radio, checkBox, textInput, textArea }
+    handleSelectChange,
+    values: { radio, checkBox, textInput, textArea, select }
   } = useControls();
 
   return (
@@ -26,6 +30,14 @@ const MaterialUI = () => {
         <Button className="Another_className_disabled" disabled> Primary </Button>
         <Button color="secondary" disabled> Secondary </Button>
         <Button color="alert" disabled> Alert </Button>
+      </DemoControlsContainer>
+
+      <DemoControlsContainer title="Select">
+        <Select
+          onChange={handleSelectChange}
+          value={select}
+          options={options}
+        />
       </DemoControlsContainer>
 
       <DemoControlsContainer title="Checkbox">

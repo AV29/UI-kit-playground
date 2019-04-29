@@ -12,9 +12,9 @@ class App extends Component {
   render() {
     return (
       <DemoGrid>
+        <DevExtreme/>
         <MaterialUI/>
         <ToolBox/>
-        <DevExtreme/>
       </DemoGrid>
     );
   }
