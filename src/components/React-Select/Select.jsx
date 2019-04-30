@@ -6,7 +6,8 @@ const customStyles = {
   option: (provided, state) => ({
     ...provided,
     borderBottom: '1px dotted pink',
-    color: state.isSelected ? 'white' : 'skyblue',
+    color: state.isSelected || state.isFocused ? 'white' : 'skyblue',
+    backgroundColor: state.isSelected ? 'skyblue' : state.isFocused ? 'pink' : 'white',
     padding: 10,
   })
 };
@@ -19,6 +20,7 @@ export default (({
                  }) => {
   return (
     <Select
+      classNamePrefix={"react-select-llama"}
       styles={customStyles}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}
