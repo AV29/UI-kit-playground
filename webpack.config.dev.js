@@ -55,7 +55,6 @@ export default {
             options: {
               importLoaders: 1,
               sourceMap: true,
-              minimize: true,
               modules: true,
               localIdentName: '[name]__[local]__[hash:base64:5]'
             }

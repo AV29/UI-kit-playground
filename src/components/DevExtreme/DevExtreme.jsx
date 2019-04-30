@@ -30,6 +30,10 @@ const DevExtreme = () => {
         <Button
           text='Example Button'
         />
+
+      </DemoControlsContainer>
+
+      <DemoControlsContainer title="Select">
         <Select
           items={dataSource}
           value={selectValue}
@@ -41,6 +45,7 @@ const DevExtreme = () => {
         />
       </DemoControlsContainer>
     </DemoThemeContainer>
+
   )
 };
 

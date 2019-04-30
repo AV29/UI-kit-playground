@@ -9,8 +9,6 @@ import Select from './controls/Select';
 import { DemoControlsContainer, DemoThemeContainer } from '../demo/DemoWrappers';
 import useControls from '../demo/useControls';
 
-const options = [{ label: 'Anton', value: 1 }, { label: 'Hamed', value: 2 }];
-
 const MaterialUI = () => {
   const {
     handleChange,
@@ -36,7 +34,7 @@ const MaterialUI = () => {
         <Select
           onChange={handleSelectChange}
           value={select}
-          options={options}
+          options={[{ label: 'Anton', value: 1 }, { label: 'Hamed', value: 2 }]}
         />
       </DemoControlsContainer>
 
