@@ -35,7 +35,9 @@
     "@material-ui/core": "^3.9.3",
     "devextreme": "^18.2.7",
     "devextreme-react": "^18.2.7",
+    "react-redux": "^7.0.3",
     "react-select": "^2.4.3",
-    "react-toolbox": "^2.0.0-beta.13"
+    "react-toolbox": "^2.0.0-beta.13",
+    "redux": "^4.0.1"
   }
 }
