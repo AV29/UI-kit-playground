@@ -13,11 +13,11 @@ const customStyles = {
 };
 
 export default (({
-                   className = '',
-                   getOptionLabel = ({ label }) => label,
-                   getOptionValue = ({ value }) => value,
-                   ...props
-                 }) => {
+  className = '',
+  getOptionLabel = ({ label }) => label,
+  getOptionValue = ({ value }) => value,
+  ...props
+}) => {
   return (
     <Select
       classNamePrefix={"react-select-llama"}
