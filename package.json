@@ -3,9 +3,7 @@
   "version": "0.0.1",
   "description": "Playground for ui components",
   "scripts": {
-    "start": "babel-node tools/serverDev.js",
-    "build": "webpack --mode production --config webpack.config.prod.js",
-    "build2": "webpack && babel src --out-dir lib --presets react,es2015"
+    "start": "babel-node tools/serverDev.js"
   },
   "license": "ISC",
   "devDependencies": {
