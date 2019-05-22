@@ -60,24 +60,27 @@ export default {
       }
     }, {
       test: /(\.css|\.scss)$/,
-      use: [{
-        loader: MiniCssExtractPlugin.loader
-      }, {
-
-        loader: 'css-loader',
-        options: {
-          importLoaders: 1,
-          sourceMap: true,
-          modules: true,
-          localIdentName: '[name]__[local]__[hash:base64:5]'
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader
+        },
+        {
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            sourceMap: true,
+            modules: true,
+            localIdentName: '[name]__[local]__[hash:base64:5]'
+          }
+        },
+        {
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true,
+            strictMath: true
+          }
         }
-      }, {
-        loader: 'sass-loader',
-        options: {
-          sourceMap: true,
-          strictMath: true
-        }
-      }]
+      ]
     }, {
       test: /\.(png|woff|woff2|eot|ttf|gif)$/,
       include: /node_modules/,

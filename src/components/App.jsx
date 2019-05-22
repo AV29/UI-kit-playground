@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import MaterialUI from './MaterialUI/MaterialUI';
-import ToolBox from './ToolBox/ToolBox';
 import DevExtreme from './DevExtreme/DevExtreme';
 import ReactSelect from './React-Select/ReactSelect';
 import { DemoGrid } from './demo/DemoWrappers';
@@ -15,8 +13,6 @@ class App extends Component {
       <DemoGrid>
         <ReactSelect/>
         <DevExtreme/>
-        <MaterialUI/>
-        <ToolBox/>
       </DemoGrid>
     );
   }
