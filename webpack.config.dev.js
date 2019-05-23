@@ -1,6 +1,6 @@
 /* eslint-disable prefer-template*/
 import webpack from 'webpack';
-import { DEV_PORT, DEVELOPMENT } from './tools/constants';
+import { DEVELOPMENT } from './tools/constants';
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
