@@ -1,9 +1,12 @@
 /* eslint-disable prefer-template*/
 import { PRODUCTION } from './tools/constants';
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   devtool: 'source-map',
@@ -34,12 +37,26 @@ module.exports = {
       disable: false,
       allChunks: true
     }),
+    new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
       filename: 'index.html',
       template: './src/index.html',
     })
   ],
+  optimization: {
+    occurrenceOrder: true,
+    usedExports: true,
+    minimize: true,
+    minimizer: [
+      new TerserJSPlugin({}),
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorPluginOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }],
+        }
+      })
+    ]
+  },
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss']
   },
@@ -54,7 +71,32 @@ module.exports = {
         }
       },
       {
-        test: /(\.css|\.scss)$/,
+        test: /\.css$/,
+        include: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: false,
+                minimize: true,
+              }
+            },
+            {
+              loader: 'postcss-loader',
+              options: {
+                sourceMap: false,
+                config: {
+                  path: 'postcss.config.js'
+                }
+              }
+            }
+          ]
+        })
+      },
+      {
+        test: /\.scss$/,
         loader: ExtractTextPlugin.extract(
           Object.assign({
             fallback: {
@@ -71,6 +113,15 @@ module.exports = {
                   sourceMap: true,
                   modules: true,
                   localIdentName: '[name]__[local]__[hash:base64:5]'
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: false,
+                  config: {
+                    path: 'postcss.config.js'
+                  }
                 }
               },
               {

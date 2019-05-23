@@ -41,51 +41,93 @@ export default {
   ],
   optimization: {
     occurrenceOrder: true,
+    usedExports: true,
     minimize: true,
     minimizer: [
       new TerserJSPlugin({}),
-      new OptimizeCSSAssetsPlugin({})
+      new OptimizeCSSAssetsPlugin({
+        cssProcessorPluginOptions: {
+          preset: ['default', { discardComments: { removeAll: true } }],
+        }
+      })
     ]
   },
   resolve: {
     extensions: ['.js', '.jsx', '.css', '.scss']
   },
   module: {
-    rules: [{
-      test: /(\.js$|\.jsx?$)/,
-      loader: 'babel-loader',
-      exclude: [/node_modules/],
-      options: {
-        sourceMap: true
-      }
-    }, {
-      test: /(\.css|\.scss)$/,
-      use: [
-        {
-          loader: MiniCssExtractPlugin.loader
-        },
-        {
-          loader: 'css-loader',
-          options: {
-            importLoaders: 1,
-            sourceMap: true,
-            modules: true,
-            localIdentName: '[name]__[local]__[hash:base64:5]'
-          }
-        },
-        {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true,
-            strictMath: true
-          }
+    rules: [
+      {
+        test: /(\.js$|\.jsx?$)/,
+        loader: 'babel-loader',
+        exclude: [/node_modules/],
+        options: {
+          sourceMap: true
         }
-      ]
-    }, {
-      test: /\.(png|woff|woff2|eot|ttf|gif)$/,
-      include: /node_modules/,
-      exclude: /src/,
-      loader: 'url-loader?limit=100000'
-    }]
+      },
+      {
+        test: /\.css$/,
+        include: /node_modules/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: false,
+              config: {
+                path: 'postcss.config.js'
+              }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              sourceMap: true,
+              modules: true,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: false,
+              config: {
+                path: 'postcss.config.js'
+              }
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+              strictMath: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(png|woff|woff2|eot|ttf|gif)$/,
+        include: /node_modules/,
+        exclude: /src/,
+        loader: 'url-loader?limit=100000'
+      }
+    ]
   }
 };
