@@ -1,8 +1,8 @@
 /* eslint-disable prefer-template*/
-import { PRODUCTION } from './tools/constants';
 
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
@@ -19,11 +19,14 @@ module.exports = {
     umdNamedDefine: true
   },
   target: 'web',
-  mode: PRODUCTION,
+  mode: 'production',
   devServer: {
     contentBase: './dist'
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify('production')
+    }),
     new webpack.LoaderOptionsPlugin({
       noInfo: true,
       debug: true,
@@ -32,11 +35,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new ExtractTextPlugin({
-      filename: 'bundle.css',
-      disable: false,
-      allChunks: true
-    }),
+    new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new BundleAnalyzerPlugin(),
     new HtmlWebpackPlugin({
       inject: true,
@@ -71,68 +70,59 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
+        test: /\.(css)$/,
         include: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: false,
-                minimize: true,
-              }
-            },
-            {
-              loader: 'postcss-loader',
-              options: {
-                sourceMap: false,
-                config: {
-                  path: 'postcss.config.js'
-                }
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: 'postcss.config.js'
               }
             }
-          ]
-        })
+          }
+        ]
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract(
-          Object.assign({
-            fallback: {
-              loader: 'style-loader',
-              options: {
-                hmr: false
+        test: /\.(scss)$/,
+        include: /src/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+              modules: true,
+              importLoaders: 2,
+              localIdentName: '[name]__[local]__[hash:base64:5]'
+            }
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              config: {
+                path: 'postcss.config.js'
               }
-            },
-            use: [
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 1,
-                  sourceMap: true,
-                  modules: true,
-                  localIdentName: '[name]__[local]__[hash:base64:5]'
-                }
-              },
-              {
-                loader: 'postcss-loader',
-                options: {
-                  sourceMap: false,
-                  config: {
-                    path: 'postcss.config.js'
-                  }
-                }
-              },
-              {
-                loader: 'sass-loader',
-                options: {
-                  sourceMap: true
-                }
-              }
-            ]
-          })
-        )
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: { sourceMap: true }
+          }
+        ]
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|gif)$/,
