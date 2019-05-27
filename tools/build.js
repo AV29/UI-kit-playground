@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable import/default */
 import webpack from 'webpack';
-import config from '../webpack.config.prod';
+import config from '../configs/webpack.config.prod';
 import * as chalk from './chalkConfig';
 import * as constants from './constants';
 
