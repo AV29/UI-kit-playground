@@ -6,6 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const postcssPresetEnv = require('postcss-preset-env');
 
 process.noDeprecation = true;
@@ -108,22 +109,26 @@ const getSCSSLoader = () => ({
   ]
 });
 
-const getPlugins = plugins => [
-  new webpack.LoaderOptionsPlugin({
-    noInfo: true,
-    debug: true,
-    minimize: true
-  }),
-  new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
-  new MiniCssExtractPlugin({ filename: 'bundle.css' }),
-  new HtmlWebpackPlugin({
-    inject: true,
-    filename: 'index.html',
-    template: './src/index.html',
-  }),
-  ...plugins
-];
+const getPlugins = plugins => {
+  const basePlugins = [
+    new webpack.LoaderOptionsPlugin({
+      noInfo: true,
+      debug: true,
+      minimize: true
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new MiniCssExtractPlugin({ filename: 'bundle.css' }),
+    new HtmlWebpackPlugin({
+      inject: true,
+      filename: 'index.html',
+      template: './src/index.html',
+    }),
+    ...plugins
+  ];
+
+  return process.env.ANALYZE_BUNDLE ? basePlugins.concat(new BundleAnalyzerPlugin()) : basePlugins;
+};
 
 const extensions = ['.js', '.jsx', '.css', '.scss'];
 

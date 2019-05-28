@@ -9,7 +9,7 @@
     "prebuild": "npm-run-all clean-dist",
     "build": "babel-node tools/build.js",
     "prod": "npm run build && babel-node tools/serverProd.js",
-    "analyze": "babel-node tools/analyze.js"
+    "analyze": "cross-env ANALYZE_BUNDLE=true npm run build"
   },
   "license": "ISC",
   "devDependencies": {
@@ -25,6 +25,7 @@
     "babel-preset-stage-1": "~6.24.1",
     "babel-register": "~6.26.0",
     "chalk": "^2.4.2",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
     "express": "^4.17.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
