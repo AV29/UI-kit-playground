@@ -8,7 +8,7 @@ import configureStore from './redux/store/configureStore';
 import './styles/styles.scss';
 
 import 'devextreme/dist/css/dx.common.css';
-import './styles/3rd party/llamasoft.framework.theme.green.css';
+import './styles/3rd party/theme.css';
 
 const store = configureStore();
 
