@@ -15,6 +15,6 @@ module.exports = getConfig({
     publicPath: '/'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 });

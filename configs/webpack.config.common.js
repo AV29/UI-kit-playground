@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const postcssPresetEnv = require('postcss-preset-env');
+const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 process.noDeprecation = true;
 
@@ -116,7 +117,7 @@ const getPlugins = plugins => {
       debug: true,
       minimize: true
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    new FixStyleOnlyEntriesPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({ filename: 'bundle.css' }),
     new HtmlWebpackPlugin({
@@ -152,6 +153,7 @@ export default ({ plugins, ...options }) => ({
   devServer: {
     contentBase: `../${DIST_FOLDER}`
   },
+  bail: true,
   plugins: getPlugins(plugins),
   optimization,
   resolve: {
