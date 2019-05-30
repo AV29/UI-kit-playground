@@ -3,7 +3,7 @@
 import webpack from 'webpack';
 import config from '../configs/webpack.config.dev.js';
 import WebpackDevServer from 'webpack-dev-server';
-import { DEV_PORT, LOCALHOST_PATH, DEV_APP_ENTRY_POINT, PROD_APP_ENTRY_POINT } from './constants';
+import { DEV_PORT, LOCALHOST_PATH, DEV_APP_ENTRY_POINT } from './constants';
 import open from 'open';
 
 const compiler = webpack(config);
