@@ -20,7 +20,7 @@ export default (({
 }) => {
   return (
     <Select
-      classNamePrefix={"react-select-llama"}
+      classNamePrefix={"react-select-custom"}
       styles={customStyles}
       getOptionLabel={getOptionLabel}
       getOptionValue={getOptionValue}

@@ -54,7 +54,7 @@ const baseInitialState = {
   },
   select: '',
   radio: 'c',
-  textInput: 'Llamasoft UI Kit',
+  textInput: 'UI Kit',
   textArea: 'This is a very long description This is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long description This is a very long description This is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is a very long descriptionThis is '
 };
 
