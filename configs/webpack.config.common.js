@@ -12,10 +12,8 @@ const FixStyleOnlyEntriesPlugin = require("webpack-fix-style-only-entries");
 
 process.noDeprecation = true;
 
-const getSVGLoader = () => ({
+const getAssetsLoader = () => ({
   test: /\.(png|woff|woff2|eot|ttf|gif)$/,
-  include: /node_modules/,
-  exclude: /src/,
   loader: 'url-loader?limit=100000'
 });
 
@@ -163,9 +161,8 @@ export default ({ plugins, ...options }) => ({
     rules: [
       getJSXLoader(),
       getCSSLoader(),
-      getExternalSCSSLoader(),
       getSCSSLoader(),
-      getSVGLoader()
+      getAssetsLoader()
     ]
   }
 });

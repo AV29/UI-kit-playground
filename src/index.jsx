@@ -7,8 +7,10 @@ import configureStore from './redux/store/configureStore';
 /* Styles */
 import './styles/styles.scss';
 
-import './styles/3rd party/theme.css';
+import './styles/3rd party/dx.material.custom-scheme.css';
 import './styles/3rd party/dx.common.css';
+
+//import './styles/3rd party/theme.css';
 
 const store = configureStore();
 
