@@ -4,10 +4,11 @@ import { Provider } from 'react-redux';
 import App from './components/App';
 import configureStore from './redux/store/configureStore';
 
+const a = require('react');
 /* Styles */
 import './styles/styles.scss';
 
-import './styles/3rd party/dx.material.custom-scheme.css';
+import './styles/3rd party/dx.material.custom-scheme-1.css';
 import './styles/3rd party/dx.common.css';
 
 //import './styles/3rd party/theme.css';
